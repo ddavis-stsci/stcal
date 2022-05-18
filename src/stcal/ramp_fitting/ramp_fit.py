@@ -49,7 +49,7 @@ def create_ramp_fit_class(model, dqflags=None, suppress_one_group=False):
     """
     ramp_data = ramp_fit_class.RampData()
 
-    if not suppress_one_group and model.meta.exposure.zero_frame:
+    if not suppress_one_group and hasattr(model.meta.exposure, 'zeroframe'):
         # ZEROFRAME processing here
         zframe_locs, cnt = use_zeroframe_for_saturated_ramps(model, dqflags)
         ramp_data.zframe_locs = zframe_locs
